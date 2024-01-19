@@ -1,0 +1,21 @@
+def is_palindrome(text):
+    # Remove spaces and convert to lowercase for case-insensitive comparison
+    cleaned_text = ''.join(text.lower().split())
+
+    # Check if the cleaned text is the same forwards and backwards
+    return cleaned_text == cleaned_text[::-1]
+
+def palindrome_checker():
+    print("Palindrome Checker")
+
+    # Get user input
+    user_input = input("Enter a word or phrase: ")
+
+    # Check if it's a palindrome
+    if is_palindrome(user_input):
+        print(f"{user_input} is a palindrome!")
+    else:
+        print(f"{user_input} is not a palindrome.")
+
+if __name__ == "__main__":
+    palindrome_checker()

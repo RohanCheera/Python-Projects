@@ -1,0 +1,48 @@
+class Quiz:
+    def __init__(self, questions):
+        self.questions = questions
+        self.score = 0
+
+    def display_question(self, question):
+        print(question['question'])
+        for i, option in enumerate(question['options'], 1):
+            print(f"{i}. {option}")
+        user_answer = input("Enter the number of your answer: ")
+        return int(user_answer)
+
+    def run_quiz(self):
+        for question in self.questions:
+            user_answer = self.display_question(question)
+            correct_answer = question['correct_option']
+
+            if user_answer == correct_answer:
+                print("Correct!\n")
+                self.score += 1
+            else:
+                print(f"Wrong! The correct answer was {correct_answer}. \n")
+
+        print(f"You scored {self.score}/{len(self.questions)}")
+
+if __name__ == "__main__":
+    # Sample quiz questions
+    quiz_questions = [
+        {
+            'question': 'What is the capital of France?',
+            'options': ['Berlin', 'Madrid', 'Paris', 'Rome'],
+            'correct_option': 3
+        },
+        {
+            'question': 'Which planet is known as the Red Planet?',
+            'options': ['Mars', 'Venus', 'Jupiter', 'Saturn'],
+            'correct_option': 1
+        },
+        {
+            'question': 'Who wrote "Romeo and Juliet"?',
+            'options': ['Charles Dickens', 'William Shakespeare', 'Jane Austen', 'Mark Twain'],
+            'correct_option': 2
+        }
+    ]
+
+    # Create a Quiz object and run the quiz
+    quiz = Quiz(quiz_questions)
+    quiz.run_quiz()
